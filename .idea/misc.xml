@@ -6,8 +6,17 @@
         <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/drawable/gradasi_login.xml" value="0.14" />
         <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/drawable/radius_18.xml" value="0.14" />
         <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/drawable/radius_login.xml" value="0.14" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/drawable/selector.xml" value="0.14" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/activity_admin_add.xml" value="0.2504528985507246" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/activity_admin_file_sendiri.xml" value="0.24010416666666667" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/activity_admin_home.xml" value="0.22447916666666667" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/activity_admin_konfirmasi.xml" value="0.24010416666666667" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/activity_admin_setting.xml" value="0.24010416666666667" />
         <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/activity_main.xml" value="0.2504528985507246" />
         <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/activity_register.xml" value="0.24010416666666667" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/activity_waiting.xml" value="0.23854166666666668" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/layout/item_data_admin_home.xml" value="0.2504528985507246" />
+        <entry key="..\:/KOTLIN/Udemy/MadeeFy/app/src/main/res/menu/bottom_admin.xml" value="0.23854166666666668" />
       </map>
     </option>
   </component>

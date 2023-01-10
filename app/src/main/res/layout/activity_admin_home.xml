@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/krem"
+    android:layout_height="match_parent"
+    tools:context=".admin.AdminHome">
+
+    <TextView
+        android:id="@+id/tv_admin_home"
+        android:layout_marginVertical="20dp"
+        android:textSize="30sp"
+        android:textAlignment="center"
+        android:textColor="@color/biru"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:text="Berbagi Musik Kepada Pengguna Lain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_admin_home"
+        tools:listitem="@layout/item_data_admin_home"
+        android:layout_below="@id/tv_admin_home"
+        android:layout_above="@id/bottom_nav_admin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        />
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav_admin"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/radius_login"
+        app:menu="@menu/bottom_admin"
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>
