@@ -52,7 +52,7 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:background="@color/pink"
                     android:layout_marginHorizontal="40dp"
-                    android:id="@+id/password_input"
+                    android:id="@+id/password_input_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="textPassword" />
@@ -72,17 +72,17 @@
                 android:textAllCaps="false" />
 
             <Button
-                android:textColor="@color/black"
-                android:id="@+id/btn_register"
-                android:textAllCaps="false"
-                android:backgroundTint="@color/biru"
-                android:background="@drawable/radius_18"
-                android:text="Register"
-                android:layout_marginVertical="10dp"
+                android:id="@+id/btn_register_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_below="@id/btn_login"
                 android:layout_centerHorizontal="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_marginVertical="10dp"
+                android:background="@drawable/radius_18"
+                android:backgroundTint="@color/biru"
+                android:text="Register"
+                android:textAllCaps="false"
+                android:textColor="@color/black" />
 
 
         </RelativeLayout>

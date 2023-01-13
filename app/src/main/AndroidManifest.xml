@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.madeean.madeefy">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+
     <application
+        android:usesCleartextTraffic="true"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -13,6 +17,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MadeeFy"
         tools:targetApi="31">
+        <activity
+            android:name=".user.UserFileSendiri"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserSetting"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserAdd"
+            android:exported="false" />
+        <activity
+            android:name=".user.UserHome"
+            android:exported="false" />
         <activity
             android:name=".admin.AdminFileSendiri"
             android:exported="false" />
@@ -29,9 +45,6 @@
             android:name=".admin.AdminHome"
             android:exported="false" />
         <activity
-            android:name=".waiting.Waiting"
-            android:exported="false" />
-        <activity
             android:name=".auth.RegisterActivity"
             android:exported="false" />
         <activity
@@ -43,6 +56,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
     </application>
 
 </manifest>

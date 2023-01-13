@@ -3,13 +3,32 @@ package com.madeean.madeefy.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.madeean.madeefy.R
+import com.madeean.madeefy.admin.adapter.AdminKonfirmasiAdapter
 
 class AdminKonfirmasi : AppCompatActivity() {
+    lateinit var rv:RecyclerView
+    var listData = ArrayList<String>()
+    lateinit var adapter: AdminKonfirmasiAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin_konfirmasi)
+
+        rv = findViewById(R.id.rv_admin_konfirmasi)
+        rv.layoutManager = LinearLayoutManager(this)
+        listData.clear()
+        for (i in 1..10){
+            listData.add("Data ke $i")
+        }
+        adapter = AdminKonfirmasiAdapter(listData,this)
+        rv.adapter = adapter
+        adapter.notifyDataSetChanged()
+
+
+
 
         val botttomNavigationView: BottomNavigationView = findViewById(R.id.bottom_nav_admin)
 

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="@color/krem"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_margin="20dp"
+        android:background="@drawable/radius_18"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_nama_admin_konfirmasi"
+            android:layout_centerHorizontal="true"
+            android:padding="15dp"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:text="Madee"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/tv_email_admin_konfirmasi"
+            android:layout_below="@id/tv_nama_admin_konfirmasi"
+            android:layout_centerHorizontal="true"
+            android:padding="5dp"
+            android:textSize="22sp"
+            android:textColor="@color/black"
+            android:text="Madee@gmail.com"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <Button
+            android:id="@+id/btn_terima_admin_konfirmasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_email_admin_konfirmasi"
+            android:layout_alignParentLeft="true"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="12dp"
+            android:backgroundTint="@color/pink"
+            android:background="@drawable/radius_18"
+            android:text="Terima"
+            android:textAllCaps="false"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btn_tolak_admin_konfirmasi"
+            android:backgroundTint="@color/ungu"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="12dp"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/black"
+            android:textAllCaps="false"
+            android:text="Tolak"
+            android:background="@drawable/radius_18"
+            android:layout_below="@id/tv_email_admin_konfirmasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
