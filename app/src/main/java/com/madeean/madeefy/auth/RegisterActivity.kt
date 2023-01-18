@@ -3,6 +3,7 @@ package com.madeean.madeefy.auth
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
@@ -19,6 +20,9 @@ class RegisterActivity : AppCompatActivity() {
     lateinit var password:TextInputEditText
     lateinit var name:TextInputEditText
     lateinit var btn_register:Button
+
+    lateinit var btn_back : ImageView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -26,6 +30,13 @@ class RegisterActivity : AppCompatActivity() {
         email = findViewById(R.id.email_input_register)
         password = findViewById(R.id.password_input_register)
         name = findViewById(R.id.name_input_register)
+
+        btn_back = findViewById(R.id.iv_back_register)
+
+        btn_back.setOnClickListener {
+            val intent:Intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
 
         btn_register = findViewById(R.id.btn_register)

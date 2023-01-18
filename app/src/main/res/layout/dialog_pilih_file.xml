@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:background="@drawable/radius_login"
+    android:backgroundTint="@color/krem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <Button
+        android:id="@+id/btn_dialog_flac"
+        android:textSize="20sp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/radius_18"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:text="Flac"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:layout_below="@id/btn_dialog_flac"
+        android:id="@+id/btn_dialog_mp3"
+        android:textSize="20sp"
+        android:layout_marginVertical="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/radius_18"
+        android:textColor="@color/black"
+        android:textAllCaps="false"
+        android:text="Mp3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

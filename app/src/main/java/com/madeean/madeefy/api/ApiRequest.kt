@@ -1,11 +1,10 @@
 package com.madeean.madeefy.api
 
 import com.madeean.madeefy.model.ModelAuthLogin
+import com.madeean.madeefy.model.ModelListMusik
 import com.madeean.madeefy.model.ModelRegister
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface ApiRequest {
     @FormUrlEncoded
@@ -23,6 +22,15 @@ interface ApiRequest {
         @Field("password") password: String?,
     ): Call<ModelAuthLogin>
 
+    @GET("musik")
+    fun getAllMusik(
+        @Header ("Authorization") Authorization:String?
+    ):Call<ModelListMusik>
+
+    @GET("musik/sendiri")
+    fun getMusikSendiri(
+        @Header ("Authorization") Authorization:String?
+    ):Call<ModelListMusik>
 
 
 }

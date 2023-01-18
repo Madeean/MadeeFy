@@ -70,6 +70,7 @@ class MainActivity : AppCompatActivity() {
                     myEdit.putString("token", data.token)
                     myEdit.putString("name", data.name)
                     myEdit.putString("email", data.email)
+                    myEdit.apply()
 
                     if(data.admin == 1){
                         val intent:Intent = Intent(this@MainActivity, AdminHome::class.java)
