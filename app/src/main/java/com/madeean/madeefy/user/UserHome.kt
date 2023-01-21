@@ -1,5 +1,6 @@
 package com.madeean.madeefy.user
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
@@ -82,6 +83,11 @@ class UserHome : AppCompatActivity() {
     }
 
     private fun getData() {
+        val dialog = ProgressDialog(this@UserHome)
+        dialog.setMessage("Waiting")
+        dialog.setCancelable(false)
+        dialog.setInverseBackgroundForced(false)
+        dialog.show()
 
         val api: ApiRequest = Server.konekRetrofit()?.create(ApiRequest::class.java)!!
 
@@ -89,6 +95,7 @@ class UserHome : AppCompatActivity() {
 
         tampilData.enqueue(object : Callback<ModelListMusik> {
             override fun onResponse(call: Call<ModelListMusik>, response: retrofit2.Response<ModelListMusik>) {
+                dialog.hide()
                 if (response.isSuccessful) {
                     val data = response.body()?.data
                     listData.clear()
@@ -104,6 +111,7 @@ class UserHome : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ModelListMusik>, t: Throwable) {
+                dialog.hide()
                 t.printStackTrace()
             }
         })

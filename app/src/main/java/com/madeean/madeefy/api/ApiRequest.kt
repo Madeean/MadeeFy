@@ -1,8 +1,8 @@
 package com.madeean.madeefy.api
 
-import com.madeean.madeefy.model.ModelAuthLogin
-import com.madeean.madeefy.model.ModelListMusik
-import com.madeean.madeefy.model.ModelRegister
+import com.madeean.madeefy.model.*
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -31,6 +31,24 @@ interface ApiRequest {
     fun getMusikSendiri(
         @Header ("Authorization") Authorization:String?
     ):Call<ModelListMusik>
+
+    @Multipart
+    @POST("musik/tambah-musik")
+    fun tambahMusik(
+        @Header("Authorization") token: String?,
+        @Part file: MultipartBody.Part,
+        @Part("judul") judul: RequestBody?,
+        @Part("deskripsi") deskripsi: RequestBody?,
+        @Part("publik") publik: RequestBody?
+    ): Call<ModelDataMusik?>?
+
+
+
+    @POST("logout")
+    fun logout(
+        @Header ("Authorization") Authorization:String
+
+    ):Call<ModelLogout>
 
 
 }

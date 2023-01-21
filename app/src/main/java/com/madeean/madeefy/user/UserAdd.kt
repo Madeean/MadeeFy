@@ -3,6 +3,7 @@ package com.madeean.madeefy.user
 import android.Manifest
 import android.annotation.SuppressLint
 import android.app.Dialog
+import android.app.ProgressDialog
 import android.content.ContentUris
 import android.content.Context
 import android.content.DialogInterface
@@ -27,6 +28,15 @@ import com.karumi.dexter.listener.DexterError
 import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener
 import com.madeean.madeefy.R
+import com.madeean.madeefy.api.ApiRequest
+import com.madeean.madeefy.api.Server
+import com.madeean.madeefy.model.ModelDataMusik
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
 import java.net.URISyntaxException
 
@@ -39,7 +49,7 @@ class UserAdd : AppCompatActivity() {
     lateinit var btn_file_user_add: Button
     lateinit var tv_nama_file_user_add:TextView
     lateinit var btn_upload_admin_add: Button
-    var switches:Int? = null
+    var switches:Int? = 0
 
 
     lateinit var dialog: Dialog
@@ -48,9 +58,14 @@ class UserAdd : AppCompatActivity() {
 
     var file:File? = null
 
+    lateinit var tokenSP:String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_user_add)
+
+        val sh = getSharedPreferences("MadeeFy", MODE_PRIVATE)
+        tokenSP = sh.getString("token", "")!!
 
         et_judul_user_add = findViewById(R.id.et_judul_user_add)
         et_deskripsi_user_add = findViewById(R.id.et_deskripsi_user_add)
@@ -128,6 +143,78 @@ class UserAdd : AppCompatActivity() {
             }
             false
         })
+
+        btn_upload_admin_add.setOnClickListener {
+            if(et_judul_user_add.text.toString().isEmpty()){
+                et_judul_user_add.error = "Judul tidak boleh kosong"
+                et_judul_user_add.requestFocus()
+
+            }else if(et_deskripsi_user_add.text.toString().isEmpty()) {
+                et_deskripsi_user_add.error = "Deskripsi tidak boleh kosong"
+                et_deskripsi_user_add.requestFocus()
+
+            }else if(file == null) {
+                Toast.makeText(this, "File tidak boleh kosong", Toast.LENGTH_SHORT).show()
+
+            }else{
+                postHandle()
+            }
+        }
+
+
+
+    }
+
+    private fun postHandle(){
+        val dialog = ProgressDialog(this@UserAdd)
+        dialog.setMessage("Waiting")
+        dialog.setCancelable(false)
+        dialog.setInverseBackgroundForced(false)
+        dialog.show()
+
+
+        val judul:String = et_judul_user_add.text.toString()
+        val deskripsi:String = et_deskripsi_user_add.text.toString()
+        val file_lagu:File = file!!
+        val token:String = tokenSP
+        val publik = switches
+
+        println("FILE"+judul + deskripsi + file_lagu + publik)
+
+        val api: ApiRequest = Server.konekRetrofit()?.create(ApiRequest::class.java)!!
+
+        val requestFile:RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(),file_lagu!!)
+        val body: MultipartBody.Part = MultipartBody.Part.createFormData("file", file_lagu.name, requestFile)
+        val judulBody:RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), judul)
+        val deskripsiBody:RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), deskripsi)
+        val publikBody:RequestBody = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), publik.toString())
+
+        val tampilData: Call<ModelDataMusik?>? = api.tambahMusik(token,body , judulBody, deskripsiBody, publikBody)
+
+        tampilData?.enqueue(object : Callback<ModelDataMusik?> {
+            override fun onResponse(call: Call<ModelDataMusik?>, response: Response<ModelDataMusik?>) {
+                if (response.isSuccessful) {
+                    dialog.hide();
+                    Toast.makeText(this@UserAdd, "Berhasil tambah lagu", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this@UserAdd, UserHome::class.java)
+                    startActivity(intent)
+                    finish()
+                }else{
+                    dialog.hide();
+                    val data = response.errorBody()?.string()
+                    Toast.makeText(this@UserAdd, "gagal menambah lagu", Toast.LENGTH_SHORT).show()
+                    print("ERROR "+data)
+                }
+            }
+
+            override fun onFailure(call: Call<ModelDataMusik?>, t: Throwable) {
+                dialog.hide();
+                println("ERROR "+t.message)
+                Toast.makeText(this@UserAdd, "Gagal menghubungi server", Toast.LENGTH_SHORT).show()
+
+            }
+        })
+
     }
 
     private fun requestPermissionDexter(item:String) {
@@ -218,8 +305,8 @@ class UserAdd : AppCompatActivity() {
 //            get file path
             val uri= data?.data
             val string = getFilePath(this, uri!!)
-            val file = File(string)
-            tv_nama_file_user_add.text = file.name
+            file = File(string)
+            tv_nama_file_user_add.text = file!!.name
             Toast.makeText(this, file.toString(), Toast.LENGTH_SHORT).show()
             dialog.cancel()
 

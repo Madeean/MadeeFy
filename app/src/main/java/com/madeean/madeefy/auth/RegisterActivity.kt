@@ -1,5 +1,6 @@
 package com.madeean.madeefy.auth
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
@@ -55,6 +56,11 @@ class RegisterActivity : AppCompatActivity() {
     }
 
     private fun registerHandle() {
+        val dialog = ProgressDialog(this@RegisterActivity)
+        dialog.setMessage("Waiting")
+        dialog.setCancelable(false)
+        dialog.setInverseBackgroundForced(false)
+        dialog.show()
         val email:String = email.text.toString()
         val password:String = password.text.toString()
         val name:String = name.text.toString()
@@ -68,6 +74,7 @@ class RegisterActivity : AppCompatActivity() {
                 call: Call<ModelRegister>,
                 response: retrofit2.Response<ModelRegister>
             ) {
+                dialog.hide()
                 if(response.isSuccessful){
                     Toast.makeText(this@RegisterActivity,"Berhasil register",Toast.LENGTH_SHORT).show()
                     val intent:Intent = Intent(this@RegisterActivity,MainActivity::class.java)
@@ -79,6 +86,7 @@ class RegisterActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ModelRegister>, t: Throwable) {
+                dialog.hide()
                 Toast.makeText(this@RegisterActivity,"Gagal menghubungi server",Toast.LENGTH_SHORT).show()
                 println("ERROR "+t.message)
             }

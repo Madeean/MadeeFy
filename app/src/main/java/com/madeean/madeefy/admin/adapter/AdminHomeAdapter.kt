@@ -7,14 +7,16 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.madeean.madeefy.R
+import com.madeean.madeefy.model.ModelDataMusik
 
 class AdminHomeAdapter(
-    var text: ArrayList<String>,
+    var text: ArrayList<ModelDataMusik>,
     var context: Context):
     RecyclerView.Adapter<AdminHomeAdapter.AdminHomeViewHolder>() {
 
     class AdminHomeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var judul: TextView = itemView.findViewById(R.id.tv_judul_item_data_admin_home)
+        var deskripsi:TextView = itemView.findViewById(R.id.tv_deskripsi_item_data_admin_home)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdminHomeViewHolder {
@@ -24,7 +26,8 @@ class AdminHomeAdapter(
     }
 
     override fun onBindViewHolder(holder: AdminHomeViewHolder, position: Int) {
-        holder.judul.setText(text[position])
+        holder.judul.setText(text[position].judul)
+        holder.deskripsi.text = text[position].deskripsi
     }
 
     override fun getItemCount(): Int {

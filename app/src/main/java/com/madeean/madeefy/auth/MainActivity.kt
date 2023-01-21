@@ -1,5 +1,6 @@
 package com.madeean.madeefy.auth
 
+import android.app.ProgressDialog
 import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
@@ -51,6 +52,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loginHandle() {
+        val dialog = ProgressDialog(this@MainActivity)
+        dialog.setMessage("Waiting")
+        dialog.setCancelable(false)
+        dialog.setInverseBackgroundForced(false)
+        dialog.show()
         val email = email.text.toString()
         val password = password.text.toString()
 
@@ -63,6 +69,7 @@ class MainActivity : AppCompatActivity() {
                 call: Call<ModelAuthLogin>,
                 response: retrofit2.Response<ModelAuthLogin>
             ) {
+                dialog.hide()
                 if(response.isSuccessful){
                     val data:ModelLogin = response.body()?.data!!
                     val SP: SharedPreferences =  getSharedPreferences("MadeeFy", MODE_PRIVATE)
@@ -94,6 +101,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<ModelAuthLogin>, t: Throwable) {
+                dialog.hide()
                 Toast.makeText(this@MainActivity,"Gagal menghubungi server",Toast.LENGTH_SHORT).show()
                 println("ERROR "+t.message)
             }
