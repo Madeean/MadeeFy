@@ -6,31 +6,31 @@
 
     <RelativeLayout
         android:id="@+id/RL_item_data_admin_home"
-        android:layout_centerInParent="true"
-        android:padding="20dp"
-        android:background="@drawable/radius_18"
-        android:layout_marginVertical="20dp"
-        android:layout_marginHorizontal="10dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginVertical="20dp"
+        android:background="@drawable/radius_18"
+        android:padding="20dp">
 
 
         <TextView
             android:id="@+id/tv_judul_item_data_admin_home"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:text="MafuMafu"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:text="MafuMafu"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/tv_deskripsi_item_data_admin_home"
-            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginHorizontal="10dp"
             android:layout_toRightOf="@id/tv_judul_item_data_admin_home"
             android:text="Single kapan tau"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:textSize="20sp" />
 
     </RelativeLayout>
 

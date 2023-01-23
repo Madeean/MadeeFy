@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:background="@color/krem"
+    android:layout_height="match_parent"
+    tools:context=".detail.DetailMusikBerbagi">
+
+    <TextView
+        android:id="@+id/judul_lagu"
+
+        android:paddingHorizontal="20dp"
+        android:textAlignment="center"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:layout_margin="20dp"
+        android:text="Judul Lagu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_below="@id/judul_lagu"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/lottie_lagu"
+        app:lottie_url="https://assets5.lottiefiles.com/private_files/lf30_fjln45y5.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/controls"
+        android:padding="40dp">
+
+        <SeekBar
+            android:layout_centerHorizontal="true"
+            android:progressBackgroundTint="@color/black"
+            android:progressTint="@color/black"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/seek_bar"
+            android:scaleY="3"
+            android:layout_margin="10dp"
+            android:layout_marginHorizontal="20dp"/>
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seek_bar"
+            android:padding="20dp">
+
+
+            <ImageView
+
+                android:id="@+id/pause_play"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_baseline_pause_circle_outline_24" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>
